@@ -1,24 +1,24 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import Flex from './Flex';
-import Text from './Text';
-import Spacing from './Spacing';
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
+import Flex from './Flex'
+import Text from './Text'
+import Spacing from './Spacing'
 import {
   ButtonColor,
   ButtonSize,
   buttonColorMap,
   buttonSizeMap,
   buttonWeakMap,
-} from '@/styles/button';
+} from '@/styles/button'
 
 //버튼 타입 속성 정의
 interface ButtonProps {
-  color?: ButtonColor;
-  size?: ButtonSize;
-  weak?: boolean;
-  full?: boolean;
-  disabled?: boolean;
+  color?: ButtonColor
+  size?: ButtonSize
+  weak?: boolean
+  full?: boolean
+  disabled?: boolean
 }
 
 //styled.button 버튼 태그를 만드는데 props로 받는 속성은 ButtonProps을 사용함
@@ -36,7 +36,8 @@ const BaseButton = styled.button<ButtonProps>(
   //둘다 없으면  primary색으로 그냥 일반 버튼이고
   //색만 있으면 해당 색의 일반버튼
   //색도 있고, weak면 해당 색의 weak버튼
-  ({ color = 'primary', weak }) => (weak ? buttonWeakMap[color] : buttonColorMap[color]),
+  ({ color = 'primary', weak }) =>
+    weak ? buttonWeakMap[color] : buttonColorMap[color],
 
   //기본 버튼 사이즈는 small이고 size속성 받은 대로 해당 버튼 사이즈
   ({ size = 'small' }) => buttonSizeMap[size],
@@ -58,10 +59,16 @@ const BaseButton = styled.button<ButtonProps>(
           opacity: 0.26;
           cursor: initial;
         `
-      : undefined
-);
+      : undefined,
+)
 
-function ButtonGroup({ title, children }: { title?: string; children: React.ReactNode }) {
+function ButtonGroup({
+  title,
+  children,
+}: {
+  title?: string
+  children: React.ReactNode
+}) {
   return (
     <Flex direction="column">
       {title != null ? (
@@ -74,7 +81,7 @@ function ButtonGroup({ title, children }: { title?: string; children: React.Reac
       ) : null}
       <Flex css={buttonGroupStyle}>{children}</Flex>
     </Flex>
-  );
+  )
 }
 
 const buttonGroupStyle = css`
@@ -84,14 +91,14 @@ const buttonGroupStyle = css`
   & button {
     flex: 1;
   }
-`;
+`
 
 const Button = BaseButton as typeof BaseButton & {
-  Group: typeof ButtonGroup;
-};
+  Group: typeof ButtonGroup
+}
 
-Button.Group = ButtonGroup;
+Button.Group = ButtonGroup
 
-export default Button;
+export default Button
 
-styled.button({ cursor: 'pointer' });
+styled.button({ cursor: 'pointer' })

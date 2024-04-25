@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
-import Text from './Text';
-import { colors } from '@/styles/colorPalette';
+import styled from '@emotion/styled'
+import Text from './Text'
+import { colors } from '@/styles/colorPalette'
 
 interface BadgeProps {
-  label: string;
+  label: string
 }
 
 function Badge({ label }: BadgeProps) {
@@ -13,13 +13,13 @@ function Badge({ label }: BadgeProps) {
         {label}
       </Text>
     </Container>
-  );
+  )
 }
 
 const Container = styled.div`
   border-radius: 12px;
   background-color: ${colors.blue};
   padding: 2px 8px;
-`;
+`
 
-export default Badge;
+export default Badge

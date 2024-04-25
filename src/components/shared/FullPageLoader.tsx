@@ -1,6 +1,7 @@
-import Flex from './Flex';
-import Text from './Text';
-import Spacing from './Spacing';
+import Flex from './Flex'
+import Text from './Text'
+import Spacing from './Spacing'
+import Image from 'next/image'
 
 function FullPageLoader({ message }: { message?: string }) {
   return (
@@ -16,7 +17,7 @@ function FullPageLoader({ message }: { message?: string }) {
       align="center"
     >
       <Flex direction="column" align="center">
-        <img
+        <Image
           width={120}
           src="https://cdn.pixabay.com/animation/2023/06/13/15/12/15-12-47-323_512.gif"
           alt=""
@@ -32,7 +33,7 @@ function FullPageLoader({ message }: { message?: string }) {
         ) : null}
       </Flex>
     </Flex>
-  );
+  )
 }
 
-export default FullPageLoader;
+export default FullPageLoader

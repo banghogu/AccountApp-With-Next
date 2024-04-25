@@ -1,20 +1,20 @@
 /** @jsxImportSource @emotion/react */
-import { forwardRef, SelectHTMLAttributes } from 'react';
+import { forwardRef, SelectHTMLAttributes } from 'react'
 
-import Flex from './Flex';
-import Text from './Text';
-import styled from '@emotion/styled';
-import { colors } from '@/styles/colorPalette';
+import Flex from './Flex'
+import Text from './Text'
+import styled from '@emotion/styled'
+import { colors } from '@/styles/colorPalette'
 
 export interface Option {
-  label: string;
-  value: string | number | undefined;
+  label: string
+  value: string | number | undefined
 }
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  label?: string;
-  options: Option[];
-  placeholder?: string | number;
+  label?: string
+  options: Option[]
+  placeholder?: string | number
 }
 
 const BaseSelect = styled.select`
@@ -27,16 +27,21 @@ const BaseSelect = styled.select`
   &:required:invalid {
     color: #c0c4c7;
   }
-`;
+`
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
   { label, options, placeholder, value, ...props },
-  ref
+  ref,
 ) {
   return (
     <Flex direction="column">
       {label ? (
-        <Text typography="t7" color="black" display="inline-block" style={{ marginBottom: 6 }}>
+        <Text
+          typography="t7"
+          color="black"
+          display="inline-block"
+          style={{ marginBottom: 6 }}
+        >
           {label}
         </Text>
       ) : null}
@@ -51,7 +56,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
         ))}
       </BaseSelect>
     </Flex>
-  );
-});
+  )
+})
 
-export default Select;
+export default Select

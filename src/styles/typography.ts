@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/react'
 
 //글자 스타일 정의
 export const typographyMap = {
@@ -30,6 +30,6 @@ export const typographyMap = {
     font-size: 13px;
     line-height: 1.5;
   `,
-};
+}
 
-export type Typography = keyof typeof typographyMap;
+export type Typography = keyof typeof typographyMap

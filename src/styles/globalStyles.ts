@@ -1,5 +1,5 @@
-import { css } from '@emotion/react';
-import { colorPalette } from './colorPalette';
+import { css } from '@emotion/react'
+import { colorPalette } from './colorPalette'
 
 //colorPalette를 추가하여 전역으로 색상 관리
 //reset.css 추가
@@ -150,4 +150,4 @@ export default css`
     color: inherit;
     text-decoration: inherit;
   }
-`;
+`

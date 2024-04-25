@@ -1,42 +1,44 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect, useState, useRef } from 'react';
-import { SerializedStyles } from '@emotion/react';
-import { Colors, colors } from '@/styles/colorPalette';
+import { useEffect, useState, useRef } from 'react'
+import { SerializedStyles } from '@emotion/react'
+import { Colors, colors } from '@/styles/colorPalette'
 
 function ScrollProgressBar({
   style,
   color = 'blue980',
 }: {
-  style?: SerializedStyles;
-  color?: Colors;
+  style?: SerializedStyles
+  color?: Colors
 }) {
-  const [progress, setProgress] = useState(0);
-  const rafRef = useRef<number | null>(null);
+  const [progress, setProgress] = useState(0)
+  const rafRef = useRef<number | null>(null)
 
   useEffect(() => {
     const scroll = () => {
-      const scrollTop = document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollTop = document.documentElement.scrollTop
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight
 
       if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
+        cancelAnimationFrame(rafRef.current)
       }
 
       rafRef.current = requestAnimationFrame(() => {
-        setProgress(scrollTop / height);
-      });
-    };
+        setProgress(scrollTop / height)
+      })
+    }
 
-    window.addEventListener('scroll', scroll);
+    window.addEventListener('scroll', scroll)
 
     return () => {
       if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
+        cancelAnimationFrame(rafRef.current)
       }
 
-      window.removeEventListener('scroll', scroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', scroll)
+    }
+  }, [])
 
   return (
     <div
@@ -48,7 +50,7 @@ function ScrollProgressBar({
         height: 8,
       }}
     ></div>
-  );
+  )
 }
 
-export default ScrollProgressBar;
+export default ScrollProgressBar

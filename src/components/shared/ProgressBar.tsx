@@ -1,5 +1,5 @@
-import { colors } from '@/styles/colorPalette';
-import styled from '@emotion/styled';
+import { colors } from '@/styles/colorPalette'
+import styled from '@emotion/styled'
 
 const BaseProgressBar = styled.div<{ progress: number }>(({ progress }) => ({
   height: 10,
@@ -7,7 +7,7 @@ const BaseProgressBar = styled.div<{ progress: number }>(({ progress }) => ({
   transform: `scaleX(${progress})`,
   transition: 'transform 0.3s',
   transformOrigin: 'left',
-}));
+}))
 
 const Container = styled.div(() => ({
   width: '100%',
@@ -15,14 +15,14 @@ const Container = styled.div(() => ({
   backgroundColor: colors.gray,
   overflow: 'hidden',
   borderRadius: 6,
-}));
+}))
 
 function ProgressBar({ progress }: { progress: number }) {
   return (
     <Container>
       <BaseProgressBar progress={progress} />
     </Container>
-  );
+  )
 }
 
-export default ProgressBar;
+export default ProgressBar

@@ -1,16 +1,16 @@
 /** @jsxImportSource @emotion/react */
-import { MouseEvent } from 'react';
-import { css } from '@emotion/react';
-import Flex from './Flex';
-import Text from './Text';
-import { colors } from '@/styles/colorPalette';
+import { MouseEvent } from 'react'
+import { css } from '@emotion/react'
+import Flex from './Flex'
+import Text from './Text'
+import { colors } from '@/styles/colorPalette'
 
 function Agreement({ children }: { children: React.ReactNode }) {
   return (
     <Flex as="ul" direction="column" css={agreementContainerStyles}>
       {children}
     </Flex>
-  );
+  )
 }
 
 function AgreementTitle({
@@ -18,16 +18,16 @@ function AgreementTitle({
   checked,
   onChange,
 }: {
-  children: React.ReactNode;
-  checked: boolean;
-  onChange: (e: MouseEvent<HTMLElement>, checked: boolean) => void;
+  children: React.ReactNode
+  checked: boolean
+  onChange: (e: MouseEvent<HTMLElement>, checked: boolean) => void
 }) {
   return (
     <Flex as="li" onClick={(e) => onChange(e, !checked)}>
       <IconCheck withCircle={true} checked={checked} />
       <Text bold={true}>{children}</Text>
     </Flex>
-  );
+  )
 }
 
 function AgreementDescription({
@@ -36,16 +36,16 @@ function AgreementDescription({
   onChange,
   link,
 }: {
-  link?: string;
-  children: React.ReactNode;
-  checked: boolean;
-  onChange: (e: MouseEvent<HTMLElement>, checked: boolean) => void;
+  link?: string
+  children: React.ReactNode
+  checked: boolean
+  onChange: (e: MouseEvent<HTMLElement>, checked: boolean) => void
 }) {
   return (
     <Flex as="li">
       <Flex
         onClick={(e) => {
-          onChange(e, !checked);
+          onChange(e, !checked)
         }}
       >
         <IconCheck checked={checked} />
@@ -57,13 +57,19 @@ function AgreementDescription({
         </a>
       ) : null}
     </Flex>
-  );
+  )
 }
 
-Agreement.Title = AgreementTitle;
-Agreement.Description = AgreementDescription;
+Agreement.Title = AgreementTitle
+Agreement.Description = AgreementDescription
 
-function IconCheck({ checked, withCircle = false }: { checked: boolean; withCircle?: boolean }) {
+function IconCheck({
+  checked,
+  withCircle = false,
+}: {
+  checked: boolean
+  withCircle?: boolean
+}) {
   return (
     <svg id="Layer_1" version="1.1" viewBox="0 0 64 64" width={24} height={24}>
       <g>
@@ -83,7 +89,7 @@ function IconCheck({ checked, withCircle = false }: { checked: boolean; withCirc
         </g>
       </g>
     </svg>
-  );
+  )
 }
 
 const agreementContainerStyles = css`
@@ -92,6 +98,6 @@ const agreementContainerStyles = css`
   & li {
     cursor: pointer;
   }
-`;
+`
 
-export default Agreement;
+export default Agreement

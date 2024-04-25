@@ -1,5 +1,5 @@
-import { css } from '@emotion/react';
-import { colors } from './colorPalette';
+import { css } from '@emotion/react'
+import { colors } from './colorPalette'
 
 //기본 버튼 색상이 fill되어있음
 export const buttonColorMap = {
@@ -18,7 +18,7 @@ export const buttonColorMap = {
     background-color: ${colors.red};
     color: ${colors.white};
   `,
-};
+}
 
 //테두리만 색 있고 배경색상은 없는 버튼
 export const buttonWeakMap = {
@@ -37,7 +37,7 @@ export const buttonWeakMap = {
     color: ${colors.red};
     border: 1px solid ${colors.red};
   `,
-};
+}
 
 //버튼 사이즈 설정
 export const buttonSizeMap = {
@@ -53,7 +53,7 @@ export const buttonSizeMap = {
     font-size: 18px;
     padding: 12px 10px;
   `,
-};
+}
 
-export type ButtonColor = keyof typeof buttonColorMap;
-export type ButtonSize = keyof typeof buttonSizeMap;
+export type ButtonColor = keyof typeof buttonColorMap
+export type ButtonSize = keyof typeof buttonSizeMap

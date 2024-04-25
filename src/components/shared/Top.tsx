@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import Flex from './Flex';
-import Text from './Text';
-import { css } from '@emotion/react';
+import Flex from './Flex'
+import Text from './Text'
+import { css } from '@emotion/react'
 
 interface TopProps {
-  title: string;
-  subTitle: string;
+  title: string
+  subTitle: string
 }
 
 const Top = ({ title, subTitle }: TopProps) => {
@@ -16,11 +16,11 @@ const Top = ({ title, subTitle }: TopProps) => {
       </Text>
       <Text typography="t7">{subTitle}</Text>
     </Flex>
-  );
-};
+  )
+}
 
 const containerStyles = css`
   padding: 24px;
-`;
+`
 
-export default Top;
+export default Top
