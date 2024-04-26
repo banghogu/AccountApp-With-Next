@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import Flex from '@shared/Flex'
 import Spacing from '@shared/Spacing'
 import Button from '@shared/Button'
-import ListRow from '@shared/ListRow'
 import WithAuth from '@/components/shared/WithAuth'
 
 function MyPage() {

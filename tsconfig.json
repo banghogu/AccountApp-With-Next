@@ -19,14 +19,14 @@
       "@shared/*": ["src/components/shared/*"],
       "@styles/*": ["src/styles/*"],
       "@pages/*": ["src/pages/*"],
-      // "@mock/*": ["src/mock/*"],
+      "@mock/*": ["src/mock/*"],
       "@remote/*": ["src/remote/*"],
       "@constants/*": ["src/constants/*"],
       "@model/*": ["src/model/*"],
-      "@utils/*": ["src/utils/*"]
-      // "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
       // "@store/*": ["src/store/*"],
-      // "@contexts/*": ["src/contexts/*"]
+      "@contexts/*": ["src/contexts/*"]
     },
     "jsxImportSource": "@emotion/react"
   },
