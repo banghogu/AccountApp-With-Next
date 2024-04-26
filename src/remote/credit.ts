@@ -1,7 +1,8 @@
 import { CHECK_STATUS } from '@/constants/credit'
-import { collection, doc, setDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
 import { store } from './firebase'
 import { COLLECTIONS } from '@/constants/collection'
+import { Credit } from '@/models/credit'
 
 export function getCheckStatus() {
   const values = [
@@ -35,4 +36,19 @@ export function updateCredit({
 
 export function getCreditScore(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+export async function getCredit(userId: string) {
+  const snapshot = await getDoc(
+    doc(collection(store, COLLECTIONS.CREDIT), userId),
+  )
+
+  if (snapshot.exists() === false) {
+    return null
+  }
+
+  return {
+    id: snapshot.id,
+    ...(snapshot.data() as Credit),
+  }
 }

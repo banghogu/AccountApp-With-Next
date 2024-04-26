@@ -23,7 +23,7 @@ function AgreementTitle({
   onChange: (e: MouseEvent<HTMLElement>, checked: boolean) => void
 }) {
   return (
-    <Flex as="li" onClick={(e) => onChange(e, !checked)}>
+    <Flex as="li" onClick={(e) => onChange(e, !checked)} align="center">
       <IconCheck withCircle={true} checked={checked} />
       <Text bold={true}>{children}</Text>
     </Flex>
@@ -71,7 +71,14 @@ function IconCheck({
   withCircle?: boolean
 }) {
   return (
-    <svg id="Layer_1" version="1.1" viewBox="0 0 64 64" width={24} height={24}>
+    <svg
+      id="Layer_1"
+      version="1.1"
+      viewBox="0 0 64 64"
+      width={24}
+      height={24}
+      style={{ marginRight: 4, marginBottom: 2 }}
+    >
       <g>
         <g id="Icon-Check" transform="translate(328.000000, 278.000000)">
           {withCircle ? (

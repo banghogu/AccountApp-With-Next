@@ -47,7 +47,7 @@ function ScrollProgressBar({
         transform: `scaleX(${progress})`,
         transformOrigin: 'left',
         backgroundColor: colors[color],
-        height: 8,
+        height: 3,
       }}
     ></div>
   )

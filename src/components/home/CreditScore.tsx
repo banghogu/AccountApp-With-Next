@@ -5,8 +5,23 @@ import Spacing from '../shared/Spacing'
 import Text from '../shared/Text'
 import Button from '../shared/Button'
 import Skeleton from '../shared/Skeleton'
+import useUser from '@/hooks/useUser'
+import { useQuery } from 'react-query'
+import { getCredit } from '@/remote/credit'
 
 const CreditScore = () => {
+  const user = useUser()
+
+  const { data, isLoading } = useQuery(
+    ['credit', user?.id as string],
+    () => getCredit(user?.id as string),
+    {
+      enabled: user != null,
+    },
+  )
+  if (isLoading) {
+    return <CreditScoreSkeleton />
+  }
   return (
     <div style={{ padding: 24 }}>
       <Flex justify="space-between" align="center">
@@ -23,8 +38,7 @@ const CreditScore = () => {
         <CreditScoreChart
           width={80}
           height={80}
-          score={300}
-          //   score={data?.creditScore ?? 0}
+          score={data?.creditScore ? data?.creditScore : 0}
         />
       </Flex>
     </div>

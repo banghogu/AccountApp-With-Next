@@ -31,7 +31,6 @@ const CheckPage = () => {
     {
       enabled: status === CHECK_STATUS.COMPLETE,
       onSuccess: (score) => {
-        console.log(score)
         mutate(score)
       },
     },
@@ -59,7 +58,7 @@ const CheckPage = () => {
       <FullPageLoader message={STATUS_CHECK_MESSAGE[status ?? 'REDAY']} />
       {status === CHECK_STATUS.COMPLETE ? (
         <FixedBottomButton
-          label="확인"
+          label="확인하러 가기"
           onClick={() => {
             window.history.back()
           }}

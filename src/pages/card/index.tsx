@@ -1,8 +1,10 @@
 import Badge from '@/components/shared/Badge'
 import Input from '@/components/shared/Input'
 import ListRow from '@/components/shared/ListRow'
+import ScrollProgressBar from '@/components/shared/ScrollProgressBar'
 import Top from '@/components/shared/Top'
 import { getCards } from '@/remote/card'
+import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -36,9 +38,11 @@ const CardListPage = () => {
     <div>
       {cards && (
         <>
+          <ScrollProgressBar style={scrollProgressBarStyles} />
           <Top title="추천카드" subTitle="회원님을 위해 준비했어요" />
           <div style={{ padding: '0 24px 12px 24px' }}>
             <Input
+              placeholder="카드 검색..."
               onFocus={() => {
                 navigate.push('/card/search')
               }}
@@ -87,5 +91,11 @@ export async function getServerSideProps() {
     },
   }
 }
+
+const scrollProgressBarStyles = css`
+  position: sticky;
+  top: 64px;
+  z-index: 2;
+`
 
 export default CardListPage

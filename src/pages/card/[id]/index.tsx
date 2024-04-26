@@ -36,8 +36,6 @@ const CardDetailPage = ({ initialCard }: CardDetailPageProps) => {
 
   const { name, corpName, promotion, tags, benefit } = data
 
-  console.log(promotion.title)
-
   const subTitle =
     promotion != undefined ? removeHtmlTags(promotion.title) : tags.join(',')
 
