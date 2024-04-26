@@ -30,42 +30,50 @@ const CardListPage = () => {
   if (data == null) {
     return null
   }
-  const cards = data?.pages.map(({ items }) => items).flat()
+  const cards = data?.pages?.map(({ items }) => items).flat()
+
   return (
     <div>
-      <Top title="추천카드" subTitle="회원님을 위해 준비했어요" />
-      <div style={{ padding: '0 24px 12px 24px' }}>
-        <Input
-          onFocus={() => {
-            navigate.push('/card/search')
-          }}
-        />
-      </div>
-      <InfiniteScroll
-        dataLength={cards.length}
-        hasMore={hasNextPage}
-        loader={<ListRow.Skeleton />}
-        next={loadMore}
-        scrollThreshold="100px"
-      >
-        <ul>
-          {cards.map((card, index) => (
-            <ListRow
-              key={card.id}
-              contents={
-                <ListRow.Texts title={`${index + 1}위`} subTitle={card.name} />
-              }
-              right={
-                card.payback != null ? <Badge label={card.payback} /> : null
-              }
-              withArrow={true}
-              onClick={() => {
-                navigate.push(`/card/${card.id}`)
+      {cards && (
+        <>
+          <Top title="추천카드" subTitle="회원님을 위해 준비했어요" />
+          <div style={{ padding: '0 24px 12px 24px' }}>
+            <Input
+              onFocus={() => {
+                navigate.push('/card/search')
               }}
             />
-          ))}
-        </ul>
-      </InfiniteScroll>
+          </div>
+          <InfiniteScroll
+            dataLength={cards.length}
+            hasMore={hasNextPage}
+            loader={<ListRow.Skeleton />}
+            next={loadMore}
+            scrollThreshold="100px"
+          >
+            <ul>
+              {cards?.map((card, index) => (
+                <ListRow
+                  key={card.id}
+                  contents={
+                    <ListRow.Texts
+                      title={`${index + 1}위`}
+                      subTitle={card.name}
+                    />
+                  }
+                  right={
+                    card.payback != null ? <Badge label={card.payback} /> : null
+                  }
+                  withArrow={true}
+                  onClick={() => {
+                    navigate.push(`/card/${card.id}`)
+                  }}
+                />
+              ))}
+            </ul>
+          </InfiniteScroll>
+        </>
+      )}
     </div>
   )
 }

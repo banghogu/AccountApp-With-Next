@@ -3,6 +3,7 @@ import { CardListSkeleton } from '@/components/home/CardList'
 import { CreditScoreSkeleton } from '@/components/home/CreditScore'
 import { BannerSkeleton } from '@/components/home/EventBanners'
 import Spacing from '@/components/shared/Spacing'
+import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 
 //중요한 정보가 아니면
@@ -26,6 +27,8 @@ const CardList = dynamic(() => import('@/components/home/CardList'), {
 })
 
 export default function Home() {
+  const { data } = useSession()
+  console.log(data?.user)
   return (
     <>
       <EventBanners />

@@ -13,7 +13,7 @@ const CardList = () => {
   const { data, isLoading } = useQuery(['cards'], () => getCards())
   const navigate = useRouter()
 
-  const isShowMoreButton = data?.items.length ?? 0 > 5
+  const isShowMoreButton = data?.items?.length ?? 0 > 5
 
   if (data?.items == undefined || isLoading) {
     return <CardListSkeleton />
@@ -28,7 +28,7 @@ const CardList = () => {
         추천 카드
       </Text>
       <ul>
-        {data?.items.slice(0, 5).map((card, index) => (
+        {data?.items?.slice(0, 5).map((card, index) => (
           <ListRow
             key={card.id}
             contents={
