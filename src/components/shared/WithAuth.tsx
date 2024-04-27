@@ -5,7 +5,11 @@ function WithAuth({ children }: { children: React.ReactNode }) {
   const { data, status } = useSession()
   const router = useRouter()
 
-  if (status !== 'loading' && data == null) {
+  if (status === 'loading') {
+    return null
+  }
+
+  if (data == null) {
     router.replace('/auth/signin')
     return null
   }

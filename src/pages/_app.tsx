@@ -6,7 +6,6 @@ import { Global } from '@emotion/react'
 import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 
 const queryClient = new QueryClient()
 
@@ -21,11 +20,8 @@ export default function App({
         <SessionProvider session={session}>
           <QueryClientProvider client={queryClient}>
             <Hydrate state={pageProps.dehydratedState}>
-              <ReactQueryDevtools initialIsOpen={false} />
-              <AuthGuard>
-                <Navbar />
-                <Component {...pageProps} />
-              </AuthGuard>
+              <Navbar />
+              <Component {...pageProps} />
             </Hydrate>
           </QueryClientProvider>
         </SessionProvider>

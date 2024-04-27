@@ -2,12 +2,16 @@ import Account from '@/components/home/Account'
 import { CardListSkeleton } from '@/components/home/CardList'
 import { CreditScoreSkeleton } from '@/components/home/CreditScore'
 import { BannerSkeleton } from '@/components/home/EventBanners'
+import ScrollProgressBar from '@/components/shared/ScrollProgressBar'
+import ScrollToTopButton from '@/components/shared/ScrollToTop'
 import Spacing from '@/components/shared/Spacing'
 import { getHasAccount } from '@/remote/account'
+import { css } from '@emotion/react'
 import { GetServerSidePropsContext } from 'next'
 import { User } from 'next-auth'
 import { getSession, useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
 import { QueryClient, dehydrate } from 'react-query'
 
 //중요한 정보가 아니면
@@ -30,8 +34,15 @@ const CardList = dynamic(() => import('@/components/home/CardList'), {
   loading: () => <CardListSkeleton />,
 })
 
+interface FAQ {
+  id: string
+  question: string
+  answer: string
+}
+
 export default function Home() {
   const { data } = useSession()
+
   return (
     <>
       <EventBanners />

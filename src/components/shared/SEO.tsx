@@ -3,7 +3,7 @@ import Head from 'next/head'
 interface SEOProps {
   title: string
   description: string
-  image: string
+  image?: string
 }
 
 function SEO({ title, description, image }: SEOProps) {

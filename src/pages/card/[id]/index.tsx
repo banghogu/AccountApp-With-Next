@@ -10,6 +10,7 @@ import { motion } from 'framer-motion'
 import Flex from '@/components/shared/Flex'
 import Text from '@/components/shared/Text'
 import dynamic from 'next/dynamic'
+import SEO from '@/components/shared/SEO'
 
 const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
   ssr: false,
@@ -41,6 +42,7 @@ const CardDetailPage = ({ initialCard }: CardDetailPageProps) => {
 
   return (
     <div>
+      <SEO title={`${corpName} ${name}`} description={subTitle} />
       <Top title={`${corpName} ${name}`} subTitle={subTitle} />
       <ul>
         {benefit.map((text, index) => (

@@ -2,16 +2,32 @@ import Badge from '@/components/shared/Badge'
 import Input from '@/components/shared/Input'
 import ListRow from '@/components/shared/ListRow'
 import ScrollProgressBar from '@/components/shared/ScrollProgressBar'
+import ScrollToTopButton from '@/components/shared/ScrollToTop'
 import Top from '@/components/shared/Top'
 import { getCards } from '@/remote/card'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { QueryClient, dehydrate, useInfiniteQuery } from 'react-query'
 
 const CardListPage = () => {
   const navigate = useRouter()
+  const [showScrollButton, setShowScrollButton] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 500) {
+        setShowScrollButton(true)
+      } else {
+        setShowScrollButton(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery(
     ['cards'],
     ({ pageParam }) => getCards(pageParam),
@@ -76,6 +92,7 @@ const CardListPage = () => {
               ))}
             </ul>
           </InfiniteScroll>
+          <ScrollToTopButton show={showScrollButton} />
         </>
       )}
     </div>

@@ -35,13 +35,12 @@ const AccountNew = ({ initialStep }: { initialStep: number }) => {
     setStep((prev) => prev + 1)
   }
 
-  //todo status: 'DONE'으로 만들기
   const handleForms = async (formValues) => {
     const newAccount = {
       ...formValues,
       accountNumber: Date.now(),
       balance: 0,
-      status: 'READY',
+      status: 'DONE',
       userId: user?.id as string,
     } as Account
     await createAccount(newAccount)

@@ -38,7 +38,7 @@ const EventBanners = () => {
         {banners?.map((banner) => {
           return (
             <SwiperSlide key={banner.id}>
-              <Link href={banner.link}>
+              <>
                 <Flex
                   style={{ backgroundColor: banner.backgroundColor }}
                   justify="space-between"
@@ -52,7 +52,7 @@ const EventBanners = () => {
                   {/* 오른쪽 */}
                   <Image src={banner.iconUrl} width={40} height={40} alt="" />
                 </Flex>
-              </Link>
+              </>
             </SwiperSlide>
           )
         })}
