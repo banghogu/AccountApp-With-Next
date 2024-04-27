@@ -48,9 +48,9 @@ const CardDetailPage = ({ initialCard }: CardDetailPageProps) => {
             key={text}
             initial={{ opacity: 0, translateX: -90 }}
             transition={{
-              duration: 0.7,
+              duration: 0.4,
               ease: 'easeInOut',
-              delay: index * 0.7,
+              delay: index * 0.4,
             }}
             animate={{
               opacity: 1,

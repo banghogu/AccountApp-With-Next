@@ -7,13 +7,28 @@ import Text from '../shared/Text'
 import Image from 'next/image'
 import { css } from '@emotion/react'
 import Skeleton from '../shared/Skeleton'
+import useAccount from '@/hooks/useAccount'
+import { useEffect } from 'react'
 
 const EventBanners = () => {
-  const { data: banners, isLoading } = useQuery(['event-banners'], () =>
-    getEventBanners({ hasAccount: false }),
+  const { data: account } = useAccount()
+  const {
+    data: banners,
+    isLoading,
+    refetch: refetchBanners,
+  } = useQuery(['event-banners'], () =>
+    getEventBanners({
+      hasAccount: account != null && account.status === 'DONE',
+    }),
   )
 
-  if (banners == undefined || isLoading) {
+  useEffect(() => {
+    if (account != null && account.status === 'DONE') {
+      refetchBanners()
+    }
+  }, [account, refetchBanners])
+
+  if (isLoading || banners == null) {
     return <BannerSkeleton />
   }
 
