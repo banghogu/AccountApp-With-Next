@@ -35,6 +35,7 @@ const AccountNew = ({ initialStep }: { initialStep: number }) => {
     setStep((prev) => prev + 1)
   }
 
+  //todo status: 'DONE'으로 만들기
   const handleForms = async (formValues) => {
     const newAccount = {
       ...formValues,
