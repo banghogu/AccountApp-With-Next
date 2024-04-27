@@ -69,6 +69,7 @@ const AccountNew = ({ initialStep }: { initialStep: number }) => {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession(context)
+  console.log(session?.user)
 
   const agreedTerms = await getTerms((session?.user as User).id)
 

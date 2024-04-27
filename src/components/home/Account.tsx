@@ -7,10 +7,37 @@ import Image from 'next/image'
 import useAccount from '@/hooks/useAccount'
 import useUser from '@/hooks/useUser'
 import addDelimiter from '@/utils/addDel'
+import { useCallback } from 'react'
+import Swal from 'sweetalert2'
+import { useRouter } from 'next/router'
 
 const Account = () => {
   const { data: account } = useAccount()
   const user = useUser()
+  const navigate = useRouter()
+
+  const handleCheck = useCallback(() => {
+    if (user == null) {
+      showModal()
+
+      return
+    }
+
+    navigate.push('/account/new')
+  }, [user, navigate])
+
+  const showModal = async () => {
+    const result = await Swal.fire({
+      title: '로그인이 필요한 기능이에요',
+      text: `계좌 개설을 위해 로그인을 먼저 진행해주세요`,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: '확인',
+    })
+
+    if (result.isConfirmed) {
+      navigate.push('/auth/signin')
+    }
+  }
 
   if (account == null) {
     return (
@@ -21,29 +48,7 @@ const Account = () => {
               {`계좌 개설이\n더 쉽고 빨라졌어요`}
             </Text>
             <Spacing size={8} />
-            <Link href="/account/new">
-              <Button>3분만에 개설하기</Button>
-            </Link>
-          </Flex>
-          <Image
-            src="https://cdn4.iconfinder.com/data/icons/business-and-finance-colorful-free-hand-drawn-set/100/money_dollars-512.png"
-            alt=""
-            width={80}
-            height={80}
-          />
-        </Flex>
-      </div>
-    )
-  }
-
-  if (account.status === 'READY') {
-    return (
-      <div style={{ padding: 24 }}>
-        <Flex justify="space-between">
-          <Flex direction="column">
-            <Text bold={true} style={{ whiteSpace: 'pre-wrap' }}>
-              {user?.name} {`회원님의 \n계좌 개설이 심사중입니다...`}
-            </Text>
+            <Button onClick={handleCheck}>3분만에 개설하기</Button>
           </Flex>
           <Image
             src="https://cdn4.iconfinder.com/data/icons/business-and-finance-colorful-free-hand-drawn-set/100/money_dollars-512.png"
