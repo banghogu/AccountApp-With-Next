@@ -11,7 +11,7 @@ const queryClient = new QueryClient()
 
 export default function App({
   Component,
-  pageProps: { dehydratedState, session, ...pageProps },
+  pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
     <>

@@ -2,14 +2,21 @@ import Badge from '@/components/shared/Badge'
 import Input from '@/components/shared/Input'
 import ListRow from '@/components/shared/ListRow'
 import ScrollProgressBar from '@/components/shared/ScrollProgressBar'
-import ScrollToTopButton from '@/components/shared/ScrollToTop'
 import Top from '@/components/shared/Top'
 import { getCards } from '@/remote/card'
 import { css } from '@emotion/react'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { QueryClient, dehydrate, useInfiniteQuery } from 'react-query'
+
+const ScrollToTopButton = dynamic(
+  () => import('@/components/shared/ScrollToTop'),
+  {
+    ssr: false,
+  },
+)
 
 const CardListPage = () => {
   const navigate = useRouter()
@@ -37,6 +44,8 @@ const CardListPage = () => {
       },
     },
   )
+  console.log(data)
+
   const loadMore = useCallback(() => {
     if (hasNextPage === false || isFetching) {
       return
@@ -102,6 +111,7 @@ const CardListPage = () => {
 export async function getServerSideProps() {
   const client = new QueryClient()
   await client.prefetchInfiniteQuery(['cards'], () => getCards())
+  console.log(client)
   return {
     props: {
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(client))),

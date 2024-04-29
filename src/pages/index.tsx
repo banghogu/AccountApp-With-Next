@@ -56,6 +56,7 @@ export default function Home() {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession(context)
+  console.log(session?.user)
 
   if (session != null && session.user != null) {
     const client = new QueryClient()
